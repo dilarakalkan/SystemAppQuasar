@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <div class="text-h4">Hoş Geldiniz!</div>
+    <div class="text-h4">Öğrenci Bilgileri</div>
   </q-page>
 </template>
 
