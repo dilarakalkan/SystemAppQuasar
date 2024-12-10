@@ -4,7 +4,7 @@ import UserLogin from "src/components/UserLogin.vue";
 import MainLayout from "src/layouts/MainLayout.vue";
 
 const routes = [
-  { path: "/", name: "Login", component: UserLogin },
+  { path: "/login", name: "Login", component: UserLogin },
   {
     path: "/",
     component: MainLayout,
@@ -12,7 +12,7 @@ const routes = [
       {
         path: "home",
         name: "Home",
-        component: () => import("src/components/HomePage.vue"), // HomePage bileşeni
+        component: () => import("src/components/HomePage.vue"),
       },
     ],
   },
