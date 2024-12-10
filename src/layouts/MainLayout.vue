@@ -3,6 +3,14 @@
     <!-- Üst Menü(Header) -->
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
+        <!--açılabilir kapanabilir olması için menü -->
+        <q-btn
+          flat
+          dense
+          round
+          icon="menu"
+          @click="leftDrawerOpen = !leftDrawerOpen"
+        />
         <q-toolbar-title> Mebis </q-toolbar-title>
         <q-space />
         <q-btn flat icon="logout" label="Çıkış" @click="logout" />
@@ -28,7 +36,28 @@
           <q-item-section avatar>
             <q-icon name="home" />
           </q-item-section>
-          <q-item-section>Home</q-item-section>
+          <q-item-section>Ana Sayfa</q-item-section>
+        </q-item>
+
+        <q-item clickable v-ripple>
+          <q-item-section avatar>
+            <q-icon name="campaign" />
+          </q-item-section>
+          <q-item section>Başvuru İlanları</q-item>
+        </q-item>
+
+        <q-item clickable v-ripple>
+          <q-item-section avatar>
+            <q-icon name="calendar_today" />
+          </q-item-section>
+          <q-item section>Başvuru Takvimi</q-item>
+        </q-item>
+
+        <q-item clickable v-ripple>
+          <q-item-section avatar>
+            <q-icon name="folder" />
+          </q-item-section>
+          <q-item section>Başvurularım</q-item>
         </q-item>
 
         <q-item clickable v-ripple>
@@ -47,20 +76,6 @@
 
         <q-item clickable v-ripple>
           <q-item-section avatar>
-            <q-icon name="campaign" />
-          </q-item-section>
-          <q-item section>Başvuru İlanları</q-item>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
-            <q-icon name="folder" />
-          </q-item-section>
-          <q-item section>Başvurularım</q-item>
-        </q-item>
-
-        <q-item clickable v-ripple>
-          <q-item-section avatar>
             <q-icon name="calendar_today" />
           </q-item-section>
           <q-item section>Ders Programı</q-item>
@@ -74,14 +89,14 @@
         </q-item>
       </q-list>
     </q-drawer>
-
+    <!-- ana içerik -->
     <q-page-container>
       <q-page class="q-pa-md">
         <q-layout-grid>
-          <q-layout-row justify="center">
-            <q-layout-col cols="12" sm="10" md="8" lg="6">
+          <q-layout-row justify="start">
+            <q-layout-col cols="3" sm="4" md="2" lg="2">
               <!-- Kullanıcı Kartı -->
-              <q-card class="q-pa-md">
+              <q-card class="q-pa-md card-custom">
                 <q-card-section>
                   <div class="text-h6">Kullanıcı</div>
                   <q-btn
@@ -93,16 +108,49 @@
                 </q-card-section>
               </q-card>
             </q-layout-col>
-          </q-layout-row>
 
-          <q-layout-row justify="center">
-            <q-layout-col cols="12" sm="10" md="8" lg="6">
-              <!-- Öğrenci İşlemleri Kartı -->
-              <q-card>
+            <!-- Öğrenci İşlemleri Kartı -->
+
+            <q-layout-col cols="3" sm="4" md="2" lg="2">
+              <q-card class="q-pa-md card-custom q-mt-md">
                 <q-card-section>
                   <div class="text-h6">Öğrenci İşlemleri</div>
                   <q-btn icon="book" label="Dersler" flat />
                   <q-btn icon="description" label="Sınavlar" flat />
+                </q-card-section>
+              </q-card>
+            </q-layout-col>
+
+            <!-- Kullanıcı Profili Kartı -->
+            <q-layout-col cols="3" sm="4" md="2" lg="2">
+              <q-card class="q-pa-md card-custom">
+                <q-card-section>
+                  <div class="text-h6">Kullanıcı Profili</div>
+                  <p>YÖNETİM BİLİŞİM SİSTEMLERİ PROGRAMI</p>
+                </q-card-section>
+                <q-card-section>
+                  <q-item>
+                    <q-item-section avatar>
+                      <q-icon name="hastag" />
+                    </q-item-section>
+                    <q-item-section>95210017</q-item-section>
+                  </q-item>
+
+                  <q-item>
+                    <q-item-section avatar>
+                      <q-icon name="school" />
+                    </q-item-section>
+                    <q-item-section>4. Sınıf</q-item-section>
+                  </q-item>
+
+                  <q-item>
+                    <q-item-section avatar>
+                      <q-icon name="domain" />
+                    </q-item-section>
+                    <q-item-section>
+                      İktisadi, İdari ve Sosyal Bilimler Fakültesi/Türkçe
+                    </q-item-section>
+                  </q-item>
                 </q-card-section>
               </q-card>
             </q-layout-col>
@@ -128,6 +176,7 @@ const router = useRouter();
 const logout = () => {
   router.push("login");
 };
+//navbarın açık kapalı olduğunu kontrol etmek için
 const leftDrawerOpen = ref(true);
 </script>
 
@@ -136,5 +185,33 @@ const leftDrawerOpen = ref(true);
   background-color: rgb(78, 131, 192);
   text-align: center;
   padding: 10px 0;
+}
+.card-width {
+  max-width: 700px; /* Kartın maksimum genişliği */
+  width: 100%; /* Kartın içeriğine göre genişliği */
+  min-height: 150px; /* Kartın minimum yüksekliği */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* İçerik düzeni */
+}
+.card-custom {
+  max-width: 700px; /* Kartın genişliğini sınırlayın */
+  min-height: 150px; /* Kartın minimum yüksekliği */
+  padding: 10px; /* Kartın iç kenar boşluğunu azaltın */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-container {
+  position: absolute;
+  top: 16px; /* Yukarıdan boşluk */
+  right: 16px; /* Sağdan boşluk */
+  width: 300px; /* Kart genişliği */
+}
+
+.profile-card {
+  max-width: 300px;
+  min-height: 150px;
 }
 </style>
