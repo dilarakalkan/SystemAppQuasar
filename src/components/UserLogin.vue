@@ -37,10 +37,10 @@ const şifre = ref("");
 
 const router = useRouter();
 
-//Giriş butonu için
+
 const login = () => {
   console.log("Kullanıcı adı: ${username.value}, Şifre:${password.value}");
-  router.push("/home"); //giriş sonrası yönlendirme
+  router.push("/home");
 };
 </script>
 

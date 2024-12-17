@@ -32,42 +32,42 @@
         </q-item>
 
         <!-- Main -->
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="/home">
           <q-item-section avatar>
             <q-icon name="home" />
           </q-item-section>
           <q-item-section>Ana Sayfa</q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="/applications">
           <q-item-section avatar>
             <q-icon name="campaign" />
           </q-item-section>
           <q-item section>Başvuru İlanları</q-item>
         </q-item>
 
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="calender">
           <q-item-section avatar>
             <q-icon name="calendar_today" />
           </q-item-section>
           <q-item section>Başvuru Takvimi</q-item>
         </q-item>
 
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="/submissions">
           <q-item-section avatar>
             <q-icon name="folder" />
           </q-item-section>
           <q-item section>Başvurularım</q-item>
         </q-item>
 
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="courses">
           <q-item-section avatar>
             <q-icon name="book" />
           </q-item-section>
           <q-item-section>Dersler</q-item-section>
         </q-item>
 
-        <q-item clickable v-ripple>
+        <q-item clickable v-ripple to="exams">
           <q-item-section avatar>
             <q-icon name="assignment" />
           </q-item-section>
@@ -116,7 +116,7 @@
                 <q-card-section>
                   <div class="text-h6">Öğrenci İşlemleri</div>
                   <q-btn icon="book" label="Dersler" flat />
-                  <q-btn icon="description" label="Sınavlar" flat />
+                  <q-btn icon="description" labell="Sınavlar" flat />
                 </q-card-section>
               </q-card>
             </q-layout-col>
@@ -172,6 +172,10 @@ import { ref } from "vue"; //vuedan ref importu
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+// Menü öğelerine tıklandığında yönlendirme yap
+const goToPage = (pageName) => {
+  router.push({ name: pageName }); // Vue Router ile yönlendirme
+};
 
 const logout = () => {
   router.push("login");
@@ -213,5 +217,11 @@ const leftDrawerOpen = ref(true);
 .profile-card {
   max-width: 300px;
   min-height: 150px;
+}
+/* Kullanıcı Profili Kartı */
+
+.profile-card-container {
+  grid-column: 3; /* İkinci sütunda */
+  grid-row: span 3; /* İki satırı kaplar */
 }
 </style>
