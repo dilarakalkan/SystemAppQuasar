@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import UserLogin from "src/components/UserLogin.vue";
-import MainLayout from "src/layouts/MainLayout.vue";
+
 import ApplicationPostings from "src/pages/applications/ApplicationPostings.vue";
 
 import ApplicationsPage from "src/pages/leftdrawer/ApplicationsPage.vue";
@@ -10,6 +10,7 @@ import SubmissionsPage from "src/pages/leftdrawer/SubmissionsPage.vue";
 import CoursesPage from "src/pages/leftdrawer/CoursesPage.vue";
 import ExamsPage from "src/pages/leftdrawer/ExamsPage.vue";
 import SchedulePage from "src/pages/leftdrawer/SchedulePage.vue";
+import HomePage from "src/components/HomePage.vue";
 
 const routes = [
   { path: "/", name: "Login", component: UserLogin },
@@ -22,11 +23,11 @@ const routes = [
 
   {
     path: "/giris",
-    component: MainLayout,
+    component: HomePage,
     children: [
       {
-        path: "home",
-        name: "Home",
+        path: "/home",
+        name: "HomePage",
         component: () => import("src/components/HomePage.vue"),
       },
       {
@@ -37,7 +38,7 @@ const routes = [
       {
         path: "calendar",
         name: "Calendar",
-        component:  () => import("src/pages/leftdrawer/CalendarPage.vue"),
+        component: () => import("src/pages/leftdrawer/CalendarPage.vue"),
       },
       {
         path: "submissions",
